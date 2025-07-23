@@ -3,8 +3,6 @@ import os
 import sys
 
 # 跨平台获取单个字符输入
-
-
 def getch():
     try:
         # Windows系统

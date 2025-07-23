@@ -1,6 +1,6 @@
 1.安装vscode.
 
-2.安装vscode中文扩展,code runner扩展.
+2.安装vscode中文扩展,code runner扩展, python扩展, python Debugger, Pylance扩展.
 
 3.安装Typora.
 

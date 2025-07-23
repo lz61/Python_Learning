@@ -59,5 +59,5 @@ print("1234")
 
 练习:
 
-1.编写python程序,输出两行Hello World.(请添加单行和多行注释)
+1.编写python程序,输出两行Hello World.(请在程序中添加单行和多行注释)
 
