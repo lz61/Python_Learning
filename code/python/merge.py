@@ -1,7 +1,9 @@
+# 无法理解编程者的意图,但是可以看得懂语法
+# 正确版本
 def compressList(lst):
     i = 0
     j = len(lst) - 1  # 修改：使用列表长度计算j
-
+    
     while i < j:
         if lst[i] == 0:
             # 原有的前导零处理逻辑
@@ -18,7 +20,7 @@ def compressList(lst):
                 if lst[m] != 0:
                     next_non_zero = m
                     break
-
+            
             if next_non_zero is not None and lst[i] == lst[next_non_zero]:
                 # 合并当前元素和下一个非零元素
                 lst[i] *= 2
@@ -29,18 +31,22 @@ def compressList(lst):
                 j -= 1  # 更新j，因为合并后列表有效长度减少
             i += 1  # 无论是否合并，i都要递增
 
-
 # 测试用例
 test = [0, 2, 0, 2]
 compressList(test)
 print(test)  # 输出: [4, 0, 0, 0]
 
+list = [0,2,0,2] 
+# 0 2 0 2
+# 2 0 2 0
+# 2 0 2 0
+# 2 2 0 0
+# 4 0 0 0 
+move(list,0,3)
+assert(list == [4,0,0,0]) # 希望输出： 4 0 0 0 
+# assert (#检验一个东西是不是真多)
 
-def test():
-    x = 2
-    if x == 1:
-        print(1)
-        return 0
-    else:
-        print(2)
-        return 1
+
+list = [0,2,4,0]
+move(list)
+assert(list == [2,4,0,0]) 
