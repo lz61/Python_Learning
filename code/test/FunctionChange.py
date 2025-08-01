@@ -21,7 +21,5 @@ print(y)
 #列表     ->[1的地址,2的地址]
 #常量     1        2
 
-
 def test(x):
     return 1
-

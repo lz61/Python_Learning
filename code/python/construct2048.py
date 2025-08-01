@@ -4,6 +4,9 @@
 # 第三件事: 输出board
 # 第四件事: 响应用户输入
 
+
+# 仍有一些问题,请之后修复一下
+
 # 最后几件事:
 # 1.判断用户输入是否有效
 # 2.判断游戏失败
@@ -115,6 +118,7 @@ def compressListLeft(lst):
             i += 1  # 无论是否合并，i都要递增
 
 def leftMoveBoard(board):
+    # 压缩board[0]-board[3]
     for i in range(len(board)):
         compressListLeft(board[i])
 
@@ -149,42 +153,101 @@ outputBoard(board)
 # 假设用户输入的就是这五个字符中的一个
 key = userInput()
 
+# 稍微有一些问题
 while key!="Q" and key!="q":
     # 执行循环
     if key == "A" or key == 'a':
+        old_board=board
         # Left move the board
+        board = rotateRight90(board)
+        board = rotateRight90(board)
+        board = rotateRight90(board)
+        board = rotateRight90(board)
+
+        # board->列表
+
+
         leftMoveBoard(board)
-        # 新生成一个元素
-        addNumToBoard(board)
-        outputBoard(board)
+        if isSameBoard(old_board,board):
+            # 不对board做任何操作
+            board = board
+        else:
+            addNumToBoard(board)
+            outputBoard(board)
 
     # downside
     elif key== "S" or key== 's':
+        old_board = board
+
+        #board经历s的操作
         board = rotateRight90(board)
+        
         leftMoveBoard(board)
         board = rotateRight90(board)
         board = rotateRight90(board)
         board = rotateRight90(board)
-        addNumToBoard(board)
-        outputBoard(board)
-        # rotateRight90(board)
+
+        # 判定; old_board是否和board完全保持一致
+        # 如果完全保持一致,则用户输入非法,不做任何操作
+        if isSameBoard(old_board,board):
+            # 不对board做任何操作
+            board = board
+        else:
+            addNumToBoard(board)
+            outputBoard(board)
 
     elif key == "D" or key == "d":
+        old_board = board
         board = rotateRight90(board)
         board = rotateRight90(board)
         leftMoveBoard(board)
         board = rotateRight90(board)
         board = rotateRight90(board)
-        addNumToBoard(board)
-        outputBoard(board)
+
+        if isSameBoard(old_board,board):
+            # 不对board做任何操作
+            board = board
+        else:
+            addNumToBoard(board)
+            outputBoard(board)
         
     elif key == "W" or key == "w":
+        old_board=board
         board = rotateRight90(board)
         board = rotateRight90(board)
         board = rotateRight90(board)
         leftMoveBoard(board)
         board = rotateRight90(board)
-        addNumToBoard(board)
-        outputBoard(board)     
 
+        if isSameBoard(old_board,board):
+            # 不对board做任何操作
+            board = board
+        else:
+            addNumToBoard(board)
+            outputBoard(board)
+
+    # 当用户操作完,并且用户按哪个按钮都无法继续游戏,则输出：游戏失败！
+    old_board=board
+
+    # 判断左移并记录
+    flag_left = True
+    board = rotateRight90(board)
+    board = rotateRight90(board)
+    board = rotateRight90(board)
+    board = rotateRight90(board)
+
+    leftMoveBoard(old_board)
+    if isSameBoard(old_board,board):
+        flag_left=False
+    # 判断右移并记录
+
+    # 判断上移并记录
+
+    # 判断下移并记录
+
+    # 回头改一下
+    if flag_left==False:
+        print("游戏结束")
+        # 游戏结束
+        break
     key = userInput()

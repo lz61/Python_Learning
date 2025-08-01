@@ -6,6 +6,8 @@
 
 1.第一个python程序: 输出hello world
 
+创建一个test.py文件即可.
+
 ```
 print("Hello World!")
 ```
